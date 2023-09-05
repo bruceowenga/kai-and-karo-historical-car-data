@@ -32,11 +32,11 @@ def insert_into_db(json_file_path):
             WHERE id = ?;
             ''', (scrape_timestamp, record['updated_at'], record['name'], record['price'], record['mileage'], record['annual_insurance'], record['availability'], record['condition'], car_id))
         else:
-            # Insert the new record into the database
+           # Insert the new record into the database
             cursor.execute('''
-            INSERT INTO Cars (id, scrape_timestamp, created_at, updated_at, name, description, price_currency, price, body_type, source, current_location, drive, mileage, mileage_unit, color, annual_insurance_currency, annual_insurance, year_of_manufacture, thumbnail, availability, purchase_status, condition, duty_and_clearance_fee_currency, duty_and_clearance_fee, estimated_arrival_days, is_published, slug, agent_whatsapp_contact)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-            ''', (car_id, scrape_timestamp, record['created_at'], record['updated_at'], record['name'], record['description'], record['price_currency'], record['price'], record['body_type'], record['source'], record['current_location'], record['drive'], record['mileage'], record['mileage_unit'], record['color'], record['annual_insurance_currency'], record['annual_insurance'], record['year_of_manufacture'], record['thumbnail'], record['availability'], record['purchase_status'], record['condition'], record['duty_and_clearance_fee_currency'], record['duty_and_clearance_fee'], record['estimated_arrival_days'], record['is_published'], record['slug'], record['agent_whatsapp_contact']))
+            INSERT INTO Cars (id, scrape_timestamp, created_at, updated_at, model, make, name, description, price_currency, price, body_type, source, current_location, drive, mileage, mileage_unit, color, annual_insurance_currency, annual_insurance, year_of_manufacture, thumbnail, availability, purchase_status, condition, duty_and_clearance_fee_currency, duty_and_clearance_fee, estimated_arrival_days, is_published, slug, agent_whatsapp_contact)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ''', (car_id, scrape_timestamp, record['created_at'], record['updated_at'], record['model']['name'], record['model']['make']['name'], record['name'], record['description'], record['price_currency'], record['price'], record['body_type'], record['source'], record['current_location'], record['drive'], record['mileage'], record['mileage_unit'], record['color'], record['annual_insurance_currency'], record['annual_insurance'], record['year_of_manufacture'], record['thumbnail'], record['availability'], record['purchase_status'], record['condition'], record['duty_and_clearance_fee_currency'], record['duty_and_clearance_fee'], record['estimated_arrival_days'], record['is_published'], record['slug'], record['agent_whatsapp_contact']))
 
             # # Insert the new record into the database
             # cursor.execute('''

@@ -12,7 +12,9 @@ def create_db():
         id INTEGER PRIMARY KEY,
         created_at DATETIME,
         updated_at DATETIME,
-        scrape_timestamp DATETIME,  -- Add this field
+        scrape_timestamp DATETIME,
+        model TEXT,
+        make TEXT,
         name TEXT,
         description TEXT,
         price_currency TEXT,

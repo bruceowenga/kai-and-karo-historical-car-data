@@ -3,6 +3,7 @@ import json
 import requests
 import pandas as pd
 from urllib.parse import urlparse
+import urllib.parse
 from tqdm import tqdm
 from datetime import datetime
 from insert_db_script import insert_into_db
@@ -36,9 +37,12 @@ def scraper():
     start_time = datetime.now()  # Record the start time
 
     for model_make in model_make_options:
+        # Encode the model_make string
+        encoded_model_make = urllib.parse.quote(model_make)
+
         page = 1
         while True:
-            url = f"https://www.kaiandkaro.com/_next/data/V59c9TMNrmk5nnPVhikd4/vehicles.json?model__make__name={model_make}&page={page}"
+            url = f"https://www.kaiandkaro.com/_next/data/V59c9TMNrmk5nnPVhikd4/vehicles.json?model__make__name={encoded_model_make}&page={page}"
 
             response = session.get(url)
             try:

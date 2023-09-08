@@ -43,6 +43,7 @@ def scraper():
         page = 1
         while True:
             url = f"https://www.kaiandkaro.com/_next/data/V59c9TMNrmk5nnPVhikd4/vehicles.json?model__make__name={encoded_model_make}&page={page}"
+            print(url)
 
             response = session.get(url)
             try:

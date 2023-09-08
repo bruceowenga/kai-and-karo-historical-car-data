@@ -38,7 +38,7 @@ def scraper():
     for model_make in model_make_options:
         page = 1
         while True:
-            url = f"https://www.kaiandkaro.com/_next/data/4vd3pMGvRQm7k7XtapLqp/vehicles.json?model__make__name={model_make}&page={page}"
+            url = f"https://www.kaiandkaro.com/_next/data/V59c9TMNrmk5nnPVhikd4/vehicles.json?model__make__name={model_make}&page={page}"
 
             response = session.get(url)
             try:

@@ -6,12 +6,17 @@ from urllib.parse import urlparse
 import urllib.parse
 from tqdm import tqdm
 from datetime import datetime
-from insert_db_script import insert_into_db
-from create_db import create_db
+from functions.insert_db_script import insert_into_db
+from functions.create_db import create_db
+from functions.retrieve_id import get_unique_id
 
 from requests import Session
 
+
+
 session = requests.Session()
+
+request_id = get_unique_id()
 
 def get_domain(url):
     parsed_url = urlparse(url)
@@ -42,8 +47,8 @@ def scraper():
 
         page = 1
         while True:
-            url = f"https://www.kaiandkaro.com/_next/data/V59c9TMNrmk5nnPVhikd4/vehicles.json?model__make__name={encoded_model_make}&page={page}"
-            print(url)
+            url = f"https://www.kaiandkaro.com/_next/data/{request_id}/vehicles.json?model__make__name={encoded_model_make}&page={page}"
+            # print(url)
 
             response = session.get(url)
             try:
